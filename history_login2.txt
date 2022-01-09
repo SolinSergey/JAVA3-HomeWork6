@@ -1,0 +1,11 @@
+# Вы авторизованы как: nick2
+nick2: privet
+nick1: hello
+Личное сообщение для nick1:kuku
+nick1 вышел из чата
+# Вы авторизованы как: nick2
+nick1: pisss
+nick2: aga
+nick2: ura
+nick1: ugu
+nick1 вышел из чата

@@ -1,3 +1,7 @@
+package Task1;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -17,6 +21,8 @@ public class ClientHandler {
     private String nick;
     private String login;
 
+    private static final Logger logger = LogManager.getLogger(ClientHandler.class.getName());
+
     public String getName() {
         return name;
     }
@@ -33,12 +39,14 @@ public class ClientHandler {
                     authentication();
                     readMessages();
                 } catch (IOException | SQLException e) {
+                    logger.error(e);
                     e.printStackTrace();
                 } finally {
                     closeConnection();
                 }
             });
         } catch (IOException e) {
+            logger.error("Проблемы при создании обработчика клиента");
             throw new RuntimeException("Проблемы при создании обработчика клиента");
         }
     }
@@ -47,6 +55,7 @@ public class ClientHandler {
         while (true) {
             String str = in.readUTF();
             if (str.startsWith("/auth")) {
+                logger.info("Клиент прислал комманду >> "+str);
                 String[] parts = str.split("\\s");
                 login = parts[1];
                 nick = myServer.getAuthService().getNickByLoginPass(parts[1], parts[2]);
@@ -55,6 +64,7 @@ public class ClientHandler {
                         sendMsg("/authok " + nick + " " + login);
                         name = nick;
                         myServer.broadcastMsg(name + " зашел в чат");
+                        logger.info(name + " зашел в чат");
                         myServer.subscribe(this);
                         return;
                     } else {
@@ -72,8 +82,9 @@ public class ClientHandler {
         while (true) {
             String strFromClient = in.readUTF();
             strFromClient = strFromClient.trim();
+            logger.info("Клиент прислал >> "+strFromClient);
             String msg;
-            System.out.println("от " + name + ": " + strFromClient);
+            //System.out.println("от " + name + ": " + strFromClient);
             if (strFromClient.equals("/end")) {
                 return;
             }
@@ -105,7 +116,8 @@ public class ClientHandler {
                     myServer.broadcastMsg("Участник чата " + name + " заменил ник на новый: " + parts[1]);
                 }
                 catch (SQLException e){
-                    e.printStackTrace();
+                    logger.error(e);
+                    //e.printStackTrace();
                     connection.rollback();
                 }
                 if (stmt != null) {
@@ -126,7 +138,7 @@ public class ClientHandler {
         try {
             out.writeUTF(msg);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -136,17 +148,17 @@ public class ClientHandler {
         try {
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         try {
             out.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         try {
             socket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }
