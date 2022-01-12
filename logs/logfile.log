@@ -1,0 +1,30 @@
+INFO  2022-01-03 17:40:43 [main] BaseAuthService (BaseAuthService.java:30) - Сервис аутентификации запущен
+INFO  2022-01-03 17:40:43 [main] MyServer (MyServer.java:34) - Сервер ожидает подключение
+INFO  2022-01-03 17:41:08 [main] MyServer (MyServer.java:37) - Клиент подключился
+INFO  2022-01-03 17:41:08 [main] MyServer (MyServer.java:34) - Сервер ожидает подключение
+INFO  2022-01-03 17:41:25 [main] MyServer (MyServer.java:37) - Клиент подключился
+INFO  2022-01-03 17:41:25 [main] MyServer (MyServer.java:34) - Сервер ожидает подключение
+INFO  2022-01-03 17:41:31 [pool-2-thread-1] ClientHandler (ClientHandler.java:57) - Клиент прислал комманду >> /auth login1 pass1
+INFO  2022-01-03 17:41:31 [pool-2-thread-1] ClientHandler (ClientHandler.java:66) - nick1 зашел в чат
+INFO  2022-01-03 17:41:39 [pool-2-thread-2] ClientHandler (ClientHandler.java:57) - Клиент прислал комманду >> /auth login2 pass2
+INFO  2022-01-03 17:41:39 [pool-2-thread-2] ClientHandler (ClientHandler.java:66) - nick2 зашел в чат
+INFO  2022-01-03 17:42:00 [pool-2-thread-1] ClientHandler (ClientHandler.java:84) - Клиент прислал >> pisss
+INFO  2022-01-03 17:42:05 [pool-2-thread-2] ClientHandler (ClientHandler.java:84) - Клиент прислал >> aga
+INFO  2022-01-03 17:42:14 [pool-2-thread-2] ClientHandler (ClientHandler.java:84) - Клиент прислал >> ura
+INFO  2022-01-03 17:42:16 [pool-2-thread-1] ClientHandler (ClientHandler.java:84) - Клиент прислал >> ugu
+ERROR 2022-01-03 17:42:20 [pool-2-thread-1] ClientHandler (ClientHandler.java:41) - java.io.EOFException
+ERROR 2022-01-03 17:42:22 [pool-2-thread-2] ClientHandler (ClientHandler.java:41) - java.io.EOFException
+INFO  2022-01-03 18:03:09 [main] BaseAuthService (BaseAuthService.java:31) - Сервис аутентификации запущен
+INFO  2022-01-03 18:03:09 [main] MyServer (MyServer.java:35) - Сервер ожидает подключение
+INFO  2022-01-03 18:03:36 [main] MyServer (MyServer.java:38) - Клиент подключился
+INFO  2022-01-03 18:03:36 [main] MyServer (MyServer.java:35) - Сервер ожидает подключение
+INFO  2022-01-03 18:03:39 [pool-2-thread-1] ClientHandler (ClientHandler.java:57) - Клиент прислал комманду >> /auth login1 pass1
+INFO  2022-01-03 18:03:39 [pool-2-thread-1] ClientHandler (ClientHandler.java:66) - nick1 зашел в чат
+ERROR 2022-01-03 18:03:42 [pool-2-thread-1] ClientHandler (ClientHandler.java:41) - java.io.EOFException
+INFO  2022-01-03 18:05:32 [main] Task1.BaseAuthService (BaseAuthService.java:32) - Сервис аутентификации запущен
+INFO  2022-01-03 18:05:32 [main] Task1.MyServer (MyServer.java:35) - Сервер ожидает подключение
+INFO  2022-01-03 18:06:02 [main] Task1.MyServer (MyServer.java:38) - Клиент подключился
+INFO  2022-01-03 18:06:02 [main] Task1.MyServer (MyServer.java:35) - Сервер ожидает подключение
+INFO  2022-01-03 18:06:04 [pool-2-thread-1] Task1.ClientHandler (ClientHandler.java:58) - Клиент прислал комманду >> /auth login1 pass1
+INFO  2022-01-03 18:06:04 [pool-2-thread-1] Task1.ClientHandler (ClientHandler.java:67) - nick1 зашел в чат
+ERROR 2022-01-03 18:06:09 [pool-2-thread-1] Task1.ClientHandler (ClientHandler.java:42) - java.io.EOFException

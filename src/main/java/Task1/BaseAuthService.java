@@ -1,8 +1,15 @@
+package Task1;
+import Task1.AuthService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseAuthService implements AuthService {
+    private static final Logger logger = LogManager.getLogger(ClientHandler.class.getName());
+
     private class Entry {
         private String login;
         private String pass;
@@ -21,12 +28,14 @@ public class BaseAuthService implements AuthService {
 
     @Override
     public void start() {
-        System.out.println("Сервис аутентификации запущен");
+        //System.out.println("Сервис аутентификации запущен");
+        logger.info("Сервис аутентификации запущен");
     }
 
     @Override
     public void stop() {
-        System.out.println("Сервис аутентификации остановлен");
+        //System.out.println("Сервис аутентификации остановлен");
+        logger.info("Сервис аутентификации остановлен");
     }
 
 
@@ -43,14 +52,14 @@ public class BaseAuthService implements AuthService {
                 stmt.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         try {
             if (connection != null) {
                 connection.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace().toString());
         }
 
         }
